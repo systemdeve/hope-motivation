@@ -32,6 +32,31 @@
   }
   .wrap{ max-width:640px; margin:0 auto; padding: 0 20px 80px; }
 
+  /* Site nav */
+  .site-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    padding: 16px 20px;
+    background: var(--sky-top);
+  }
+  .brand{
+    color:#FFFBF2;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.25rem;
+    font-weight:600;
+    text-decoration:none;
+  }
+  .nav-links a{
+    color:#EFE3D2;
+    text-decoration:none;
+    margin-left:18px;
+    font-size:0.85rem;
+  }
+  .nav-links a:hover{ color: var(--gold-soft); }
+
   /* Hero */
   .hero{
     background: linear-gradient(180deg, var(--sky-top) 0%, #6B4E63 55%, var(--sky-bottom) 100%);
@@ -175,6 +200,7 @@
     text-align:center;
     transition: transform 4s ease-in-out;
     transform: scale(0.72);
+    cursor:pointer;
   }
   .breathe-circle.expand{ transform: scale(1); }
   .breathe-note{
@@ -184,12 +210,67 @@
     text-align:center;
   }
 
+  /* Secondary page sections (About / Privacy / Contact) */
+  .page-section{ padding-top: 50px; }
+  .section-header{ text-align:center; margin-bottom: 6px; }
+  .section-header h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size: clamp(1.8rem, 6vw, 2.3rem);
+    margin: 0 0 8px;
+  }
+  .section-header p{ color: var(--muted); margin:0; }
+
+  .info-card{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold-soft);
+    border-radius: 4px;
+    padding: 26px 28px;
+    margin: 20px 0;
+  }
+  .info-card h3{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.25rem;
+    margin: 0 0 10px;
+  }
+  .info-card p, .info-card li{ margin: 0 0 12px; line-height:1.65; }
+  .info-card ul{ padding-left:20px; }
+  .info-card p:last-child, .info-card ul:last-child{ margin-bottom:0; }
+  .info-card a{ color: var(--gold); }
+
+  .notice{
+    background: #FBF0DC;
+    border: 1px solid var(--gold-soft);
+    border-radius: 4px;
+    padding: 16px 20px;
+    font-size: 0.88rem;
+    color: #6B4E1A;
+    margin: 20px 0;
+  }
+
+  .mail-btn{
+    display:inline-block;
+    margin-top: 6px;
+    padding: 10px 20px;
+    background: var(--gold);
+    color: #FFFBF2;
+    text-decoration:none;
+    border-radius: 5px;
+    font-weight:600;
+    font-size:0.9rem;
+  }
+  .mail-btn:hover{ background:#9A6E20; }
+
   footer{
     text-align:center;
     color: var(--muted);
     font-size:0.8rem;
     margin-top: 30px;
   }
+  .site-footer-links{ margin-top:10px; }
+  .site-footer-links a{ color: var(--muted); text-decoration:underline; margin: 0 8px; font-size:0.8rem; }
+  .site-footer-links a:hover{ color: var(--gold); }
 
   /* Ambient sound control */
   .audio-control{
@@ -234,7 +315,16 @@
     <input type="range" id="volumeSlider" min="0" max="100" value="35" aria-label="Ambient sound volume">
   </div>
 
-  <div class="hero">
+  <nav class="site-nav">
+    <a href="#top" class="brand">Daily Light</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero" id="top">
     <div class="hero-inner">
       <p class="kicker">DAILY LIGHT</p>
       <h1>A little light for today</h1>
@@ -273,7 +363,124 @@
       </section>
     </main>
 
-    <footer>Come back tomorrow for a new verse and a new word.</footer>
+    <!-- ABOUT -->
+    <section class="page-section" id="about">
+      <div class="section-header">
+        <h2>About Daily Light</h2>
+        <p>A small, quiet corner of the internet.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Why this site exists</h3>
+        <p>Daily Light was built as a small daily ritual — one Bible verse, one line of encouragement, and a minute to breathe. The idea is simple: most days don't need a long devotional or a big commitment, just a short pause before the day picks up speed.</p>
+        <p>The content changes automatically each day, so there's always something new to sit with, whether you visit once or make it part of your morning.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Where the content comes from</h3>
+        <p>The verses on this site are drawn from the King James Version of the Bible, which is in the public domain. The lines of encouragement are written for this site and aren't attributed to any particular author.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>About the breathing exercise and sound</h3>
+        <p>The breathing guide follows a simple box-breathing pattern (in, hold, out, hold) that's commonly used for a quick moment of calm. The background sound isn't a licensed music track — it's generated live in your browser, so it can play without needing to load or store any audio files.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Your data</h3>
+        <p>This site doesn't have user accounts and doesn't collect personal information on a server. A small daily streak count is saved only in your own browser's local storage, and it stays on your device. See the <a href="#privacy">Privacy Policy</a> below for more detail, including information about advertising.</p>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section class="page-section" id="privacy">
+      <div class="section-header">
+        <h2>Privacy Policy</h2>
+        <p>Last updated: <span id="lastUpdated"></span></p>
+      </div>
+
+      <div class="notice">
+        This is a general-purpose privacy policy template covering the basics most ad networks look for. It isn't legal advice, and it doesn't automatically cover every law that may apply to you (such as GDPR in the EU/UK or CCPA in California). Replace the placeholder contact email below with your own, and consider having a lawyer or a dedicated privacy-policy generator review it if you expect visitors from those regions.
+      </div>
+
+      <div class="info-card">
+        <h3>Overview</h3>
+        <p>Daily Light ("this site," "we," "us") is a small personal website. This policy explains what information is collected when you visit, how it's used, and what choices you have.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Information we collect directly</h3>
+        <p>This site does not have user accounts, does not run a server-side database, and does not ask you to submit personal information anywhere on the site.</p>
+        <p>The site does store a small amount of information in your browser's local storage, kept only on your own device:</p>
+        <ul>
+          <li>A daily visit streak count, so the site can show you how many days in a row you've visited.</li>
+          <li>Your preferred volume level for the ambient sound feature, if you use it.</li>
+        </ul>
+        <p>This information is never sent to us or to any server — it stays in your browser and can be cleared at any time by clearing your browser's site data.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Cookies and advertising</h3>
+        <p>This site may display ads served through Google AdSense. Google and its advertising partners may use cookies and similar technologies to serve ads based on your prior visits to this or other websites.</p>
+        <p>You can learn more about how Google uses data when you use partner sites, and manage your ad personalization settings, at:</p>
+        <ul>
+          <li><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a></li>
+          <li><a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a> — to control the ads you see</li>
+        </ul>
+        <p>Third-party vendors, including Google, may also use cookies to serve ads based on someone's past visits to this website or other websites.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Analytics</h3>
+        <p>If this site later adds an analytics tool (such as Google Analytics), that tool may collect information like pages visited, approximate location (from IP address), device and browser type, and time spent on the site. This section will be updated if and when such a tool is added.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Children's privacy</h3>
+        <p>This site is not directed at children under 13, and we do not knowingly collect personal information from children. If you believe a child has provided personal information through this site, please contact us so it can be removed.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Your choices</h3>
+        <p>You can clear locally stored data at any time through your browser's settings. You can also opt out of personalized advertising through your browser's ad settings or through <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google's Ad Settings</a>, and many browsers let you block cookies entirely, though this may affect how some parts of the site or its ads display.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Changes to this policy</h3>
+        <p>This policy may be updated from time to time. Changes will be posted on this page with an updated date at the top.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Contact us</h3>
+        <p>Questions about this policy can be sent through the <a href="#contact">Contact</a> section below.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page-section" id="contact">
+      <div class="section-header">
+        <h2>Get in touch</h2>
+        <p>Questions, feedback, or a correction to suggest.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Email</h3>
+        <p>The easiest way to reach us is by email. Replace the address below with your own before publishing this site.</p>
+        <a class="mail-btn" href="mailto:zylofacebookpage@gmail.com">zylofacebookpage@gmail.com</a>
+      </div>
+
+      <div class="info-card">
+        <h3>What to write in about</h3>
+        <p>Feedback on the verses or encouragement lines, a bug or something that isn't displaying right, a takedown or correction request, or general questions about the site — all welcome.</p>
+      </div>
+    </section>
+
+    <footer>
+      Come back tomorrow for a new verse and a new word.
+      <div class="site-footer-links">
+        <a href="#about">About</a>·<a href="#privacy">Privacy Policy</a>·<a href="#contact">Contact</a>
+      </div>
+    </footer>
   </div>
 
 <script>
@@ -489,7 +696,6 @@
   }
 
   function buildPad(){
-    // a soft, slow-breathing chord (C3, E3, G3, C4), each voice gently swelling
     var freqs = [130.81, 164.81, 196.00, 261.63];
     freqs.forEach(function(freq, i){
       var osc = audioCtx.createOscillator();
@@ -522,7 +728,6 @@
   }
 
   function buildNoise(){
-    // gentle filtered noise, like a distant breeze
     var bufferSize = 2 * audioCtx.sampleRate;
     var buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
     var data = buffer.getChannelData(0);
@@ -593,6 +798,12 @@
       masterGain.gain.setTargetAtTime(maxGainFromSlider(), audioCtx.currentTime, 0.08);
     }
   });
+
+  // ---------- Privacy page "last updated" date ----------
+  var lastUpdatedEl = document.getElementById('lastUpdated');
+  if(lastUpdatedEl){
+    lastUpdatedEl.textContent = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+  }
 
 })();
 </script>
